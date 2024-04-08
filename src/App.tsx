@@ -1,10 +1,7 @@
+import {MainPage} from "./pages/mainPage/MainPage.jsx";
 
 function App() {
-
-  return (
-    <>
-    </>
-  )
+  return <MainPage />;
 }
 
-export default App
+export default App;
