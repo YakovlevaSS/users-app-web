@@ -1,0 +1,78 @@
+@font-face {
+	font-family: 'Jura';
+	src: url('/src/assets/font/Jura-Regular.ttf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+body {
+  font-family: "Jura", sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: var(--Background);
+  color: var(--TypographyMain)
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input,
+div,
+button,
+a {
+  font-family: "Jura", sans-serif;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+:root {
+  --Background: rgb(18, 20, 27);
+  --BackgroundSecond:rgb(26, 28, 35)
+  --BackgroundSecondFocus: rgb(30, 32, 39);
+  --TypographyMain: rgb(220, 216, 211);
+  --TypographySecond: rgb(140, 137, 136);
+  --Brand: rgb(207, 123, 90);
+  --BrandLight: rgba(207, 123, 90, 0.2);
+  --Negative: rgb(255, 44, 71);
+  --NegativeLight: rgb(255, 44, 71, 0.2);
+}
+
