@@ -15,6 +15,7 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
           <p className={s.name}>{user?.name?.first} {user?.name?.last}</p>
           <p className={s.email}>{user.email}</p>
         </div>
+        </div>
         <div className={s.infoBlog}>
           <div className={s.infoRow}>
             <span className={s.infoTitle}>Phone No</span>
@@ -29,7 +30,7 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
             <span className={s.infoValue}>{user?.location?.city}, {user?.location?.state}, {user?.location?.country}</span>
           </div>
         </div>
-      </div>
+
     </div>
   );
 };

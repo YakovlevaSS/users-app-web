@@ -3,8 +3,7 @@
     height: 196px
     display: flex
     flex-direction: column
-    justify-content: flex-start
-    align-items: flex-start
+    justify-content: space-between
     padding: 20px
     background-color: var(--BackgroundSecond)
     border-radius: 16px
@@ -46,13 +45,13 @@
     text-align: left
 
 .infoBlog
-    display: grid
-    grid-template-columns: 72px 220px
+    display: flex
+    flex-direction: column
     gap: 10px
 
 .infoRow
     display: grid
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 72px auto
 
 .infoTitle
     font-size: 12px

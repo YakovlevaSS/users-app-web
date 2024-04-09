@@ -66,7 +66,7 @@ button {
 
 :root {
   --Background: rgb(18, 20, 27);
-  --BackgroundSecond:rgb(26, 28, 35)
+  --BackgroundSecond:rgb(26, 28, 35);
   --BackgroundSecondFocus: rgb(30, 32, 39);
   --TypographyMain: rgb(220, 216, 211);
   --TypographySecond: rgb(140, 137, 136);
