@@ -1,4 +1,4 @@
-import s from "./index.module.css";
+import s from "./index.module.sass";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IUser } from "../../interface/user";
@@ -37,8 +37,10 @@ export const MainPage = () => {
     return <div>Загружаем</div>;
   }
   return (
-  
     <div className={s.pageWrap}>
+      <div className={s.funcPanel}>
+        <button className={s.refreshButton} onClick={()=>{fetchData()}}>Refresh Users</button>
+      </div>
       <UserList users={users} />
     </div>
   );

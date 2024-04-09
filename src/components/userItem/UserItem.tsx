@@ -1,5 +1,6 @@
 import s from "./index.module.sass";
 import { IUser } from "../../interface/user";
+import formatDate from "../../utilits/formatDate";
 
 interface IProps {
   user: IUser;
@@ -23,7 +24,7 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
           </div>
           <div className={s.infoRow}>
             <span className={s.infoTitle}>Birthday</span>
-            <span className={s.infoValue}>{user?.dob?.date}</span>
+            <span className={s.infoValue}>{formatDate(user?.dob?.date)}</span>
           </div>
           <div className={s.infoRow}>
             <span className={s.infoTitle}>Address</span>
