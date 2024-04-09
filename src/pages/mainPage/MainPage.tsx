@@ -1,11 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// import s from "./index.module.css";
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { IUser } from '../../interface/user';
+import s from "./index.module.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { IUser } from "../../interface/user";
+import { UserList } from "../../components/userList/UserList";
 
 export const MainPage = () => {
-  const [users, setUsers] = useState<IUser[]|null>(null);
+  const [users, setUsers] = useState<IUser[]>([]);
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errors, setErrors] = useState<string>("");
 
@@ -24,15 +25,21 @@ export const MainPage = () => {
       });
   };
   useEffect(() => {
-		setErrors('')
-		fetchData()
-	}, [])
-console.log(users)
+    setErrors("");
+    fetchData();
+  }, []);
+
+  console.log(users);
   if (errors) {
-    return <div>ошибка</div>
+    return <div>ошибка</div>;
   }
   if (isLoading) {
-    return <div>Загружаем</div>
+    return <div>Загружаем</div>;
   }
-  return <div></div>;
+  return (
+  
+    <div className={s.pageWrap}>
+      <UserList users={users} />
+    </div>
+  );
 };
