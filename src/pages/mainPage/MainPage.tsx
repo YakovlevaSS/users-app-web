@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IUser } from "../../interface/user";
 import { UserList } from "../../components/userList/UserList";
 import { Search } from "../../components/search/Search";
+import { Analytics } from "../../components/analytics/Analytics";
 
 export const MainPage = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -67,7 +68,11 @@ export const MainPage = () => {
           Refresh Users
         </button>
       </div>
+      <div className={s.content}>
       <UserList users={inputValue ? filteredUsers : users} />
+      <Analytics users={users}/>
+      </div>
+
     </div>
   );
 };
