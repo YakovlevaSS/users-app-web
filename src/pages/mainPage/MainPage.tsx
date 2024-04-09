@@ -3,35 +3,52 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { IUser } from "../../interface/user";
 import { UserList } from "../../components/userList/UserList";
+import { Search } from "../../components/search/Search";
 
 export const MainPage = () => {
   const [users, setUsers] = useState<IUser[]>([]);
-
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [filteredUsers, setFilteredUsers] = useState<IUser[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState<string>("");
 
   const fetchData = () => {
+    setIsLoading(true)
     axios
       .get(`https://randomuser.me/api/?results=500`)
       .then((res) => {
         if (res.status === 200) {
           setUsers(res.data.results);
-          setIsLoading(false);
         }
       })
       .catch(function (error) {
-        console.debug(error.response.status);
-        setErrors(error.response.data.message);
-      });
+        console.log(error?.response?.data?.error
+          );
+        setErrors(error?.response?.data?.error || "Что-то пошло не так")
+      }) 
+      .finally (()=> {
+        setIsLoading(false)
+      })
+      
   };
+
   useEffect(() => {
     setErrors("");
     fetchData();
   }, []);
 
-  console.log(users);
+  useEffect(() => {
+    const Search = () => {
+      const filtered = users.filter((user) =>
+        user.email.toLowerCase().includes(inputValue.toLowerCase())
+      );
+      setFilteredUsers(filtered);
+    };
+    Search();
+  }, [inputValue, users]);
+
   if (errors) {
-    return <div>ошибка</div>;
+    return <div>{errors}</div>;
   }
   if (isLoading) {
     return <div>Загружаем</div>;
@@ -39,9 +56,18 @@ export const MainPage = () => {
   return (
     <div className={s.pageWrap}>
       <div className={s.funcPanel}>
-        <button className={s.refreshButton} onClick={()=>{fetchData()}}>Refresh Users</button>
+        <Search setInputValue={setInputValue} />
+        <button
+          className={s.refreshButton}
+          onClick={() => {
+            setInputValue("");
+            fetchData();
+          }}
+        >
+          Refresh Users
+        </button>
       </div>
-      <UserList users={users} />
+      <UserList users={inputValue ? filteredUsers : users} />
     </div>
   );
 };

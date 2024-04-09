@@ -35,6 +35,10 @@ a {
   cursor: pointer;
 }
 
+input {
+  border:none
+}
+
 input,
 div,
 button,

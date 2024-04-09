@@ -8,7 +8,6 @@ interface IProps {
 }
 
 export const UserList: React.FC<IProps> = ({ users }) => {
-  console.log(users);
   return (
     <div className={s.userList}>
       {users?.map((user) => (

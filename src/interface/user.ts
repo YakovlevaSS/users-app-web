@@ -1,6 +1,7 @@
 export interface IUser {
     gender: string;
     name: {
+      [x: string]: any;
       title: string;
       first: string;
       last: string;
