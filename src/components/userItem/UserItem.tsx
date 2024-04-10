@@ -1,6 +1,7 @@
 import s from "./index.module.sass";
 import { IUser } from "../../interface/user";
 import formatDate from "../../utilits/formatDate";
+import { ButtonDel } from "../buttonDel/ButtonDel";
 
 interface IProps {
   user: IUser;
@@ -12,6 +13,7 @@ export const UserItem: React.FC<IProps> = ({ user, activeCard, handleActive }) =
 
   return (
     <div className={`${s.cardWrap} ${activeCard === user?.login?.md5 ? s.activeCard : ''}`} onClick={() => handleActive(user?.login?.md5 )}>
+      {activeCard === user?.login?.md5 && <ButtonDel/>}
       <div className={s.titleBlog}>
         <div className={s.imgBlog}></div>
         <div className={s.titleText}>
