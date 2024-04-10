@@ -5,9 +5,10 @@ import { useState } from "react";
 
 interface IProps {
   users: IUser[];
+  handleDeleteUser: (id: string) => void; 
 }
 
-export const UserList: React.FC<IProps> = ({ users }) => {
+export const UserList: React.FC<IProps> = ({ users, handleDeleteUser }) => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
 
   const handleActive = (id: string) => {
@@ -17,7 +18,7 @@ export const UserList: React.FC<IProps> = ({ users }) => {
   return (
     <div className={s.userList}>
       {users?.map((user) => (
-          <UserItem user={user} key={user.login.md5} activeCard={activeCard} handleActive={handleActive}/>
+          <UserItem user={user} key={user.login.md5} activeCard={activeCard} handleActive={handleActive} handleDeleteUser={handleDeleteUser}/>
       ))}
     </div>
   );

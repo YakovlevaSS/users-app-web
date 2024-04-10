@@ -46,6 +46,13 @@ export const MainPage = () => {
     Search();
   }, [inputValue, users]);
 
+
+  const handleDeleteUser = (id: string) => {
+    const updatedUsers = users.filter(user => user.login.md5 !== id);
+    setUsers(updatedUsers);
+
+  };
+
   if (errors) {
     return <div>{errors}</div>;
   }
@@ -67,7 +74,7 @@ export const MainPage = () => {
         </button>
       </div>
       <div className={s.content}>
-        <UserList users={inputValue ? filteredUsers : users} />
+        <UserList users={inputValue ? filteredUsers : users} handleDeleteUser={handleDeleteUser} />
         <Analytics users={users} />
       </div>
     </div>

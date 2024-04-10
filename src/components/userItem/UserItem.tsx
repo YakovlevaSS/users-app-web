@@ -7,13 +7,14 @@ interface IProps {
   user: IUser;
   activeCard: string | null;
   handleActive: (id: string) => void;
+  handleDeleteUser: (id: string) => void;
 }
 
-export const UserItem: React.FC<IProps> = ({ user, activeCard, handleActive }) => {
+export const UserItem: React.FC<IProps> = ({ user, activeCard, handleActive, handleDeleteUser }) => {
 
   return (
     <div className={`${s.cardWrap} ${activeCard === user?.login?.md5 ? s.activeCard : ''}`} onClick={() => handleActive(user?.login?.md5 )}>
-      {activeCard === user?.login?.md5 && <ButtonDel/>}
+      {activeCard === user?.login?.md5 && <ButtonDel handleDeleteUser={handleDeleteUser} user={user}/>}
       <div className={s.titleBlog}>
         <div className={s.imgBlog}></div>
         <div className={s.titleText}>
