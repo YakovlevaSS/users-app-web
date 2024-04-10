@@ -1,15 +1,21 @@
 import s from "./index.module.sass";
 import { IUser } from "../../interface/user";
 import formatDate from "../../utilits/formatDate";
+import { useState } from "react";
 
 interface IProps {
   user: IUser;
 }
 
 export const UserItem: React.FC<IProps> = ({ user }) => {
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+  const handleClick = (id: string) => {
+    setActiveCardId(prevActiveCardId => prevActiveCardId === id ? null : id);
+  }
 
   return (
-    <div className={s.cardWrap}>
+    <div className={`${s.cardWrap} ${activeCardId === user?.login?.md5 ? s.active : ''}`} onClick={() => handleClick(user?.login?.md5 )}>
       <div className={s.titleBlog}>
         <div className={s.imgBlog}></div>
         <div className={s.titleText}>

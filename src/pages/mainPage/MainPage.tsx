@@ -14,7 +14,7 @@ export const MainPage = () => {
   const [errors, setErrors] = useState<string>("");
 
   const fetchData = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     axios
       .get(`https://randomuser.me/api/?results=500`)
       .then((res) => {
@@ -23,14 +23,12 @@ export const MainPage = () => {
         }
       })
       .catch(function (error) {
-        console.log(error?.response?.data?.error
-          );
-        setErrors(error?.response?.data?.error || "Что-то пошло не так")
-      }) 
-      .finally (()=> {
-        setIsLoading(false)
+        console.log(error?.response?.data?.error);
+        setErrors(error?.response?.data?.error || "Что-то пошло не так");
       })
-      
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -47,6 +45,9 @@ export const MainPage = () => {
     };
     Search();
   }, [inputValue, users]);
+
+  const filtered = users.filter((user) => user.email == null);
+  console.log(filtered)
 
   if (errors) {
     return <div>{errors}</div>;
@@ -69,10 +70,9 @@ export const MainPage = () => {
         </button>
       </div>
       <div className={s.content}>
-      <UserList users={inputValue ? filteredUsers : users} />
-      <Analytics users={users}/>
+        <UserList users={inputValue ? filteredUsers : users} />
+        <Analytics users={users} />
       </div>
-
     </div>
   );
 };
