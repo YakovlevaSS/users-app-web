@@ -46,9 +46,6 @@ export const MainPage = () => {
     Search();
   }, [inputValue, users]);
 
-  const filtered = users.filter((user) => user.email == null);
-  console.log(filtered)
-
   if (errors) {
     return <div>{errors}</div>;
   }
