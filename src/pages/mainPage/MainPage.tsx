@@ -6,6 +6,8 @@ import { UserList } from "../../components/userList/UserList";
 import { Search } from "../../components/search/Search";
 import { Analytics } from "../../components/analytics/Analytics";
 import formatDate from "../../utilits/formatDate";
+import Loader from "../../components/stubs/Loader";
+import Error from "../../components/stubs/Error";
 
 export const MainPage = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -69,10 +71,10 @@ export const MainPage = () => {
   };
 
   if (errors) {
-    return <div>{errors}</div>;
+    return <Error error={errors}/>
   }
   if (isLoading) {
-    return <div>Загружаем</div>;
+    return <Loader/>
   }
   return (
     <div className={s.pageWrap}>
