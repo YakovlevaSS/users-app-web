@@ -2,10 +2,11 @@ import s from "./index.module.sass";
 import { IUser } from "../../interface/user";
 import { UserItem } from "../userItem/UserItem";
 import { useState } from "react";
+import EmptySearch from "../stubs/EnptySearch";
 
 interface IProps {
   users: IUser[];
-  handleDeleteUser: (id: string) => void; 
+  handleDeleteUser: (id: string) => void;
 }
 
 export const UserList: React.FC<IProps> = ({ users, handleDeleteUser }) => {
@@ -15,11 +16,19 @@ export const UserList: React.FC<IProps> = ({ users, handleDeleteUser }) => {
     setActiveCard((prevActiveCardId) => (prevActiveCardId === id ? null : id));
   };
 
-  return (
+  return users.length > 0 ? (
     <div className={s.userList}>
       {users?.map((user) => (
-          <UserItem user={user} key={user.login.md5} activeCard={activeCard} handleActive={handleActive} handleDeleteUser={handleDeleteUser}/>
+        <UserItem
+          user={user}
+          key={user.login.md5}
+          activeCard={activeCard}
+          handleActive={handleActive}
+          handleDeleteUser={handleDeleteUser}
+        />
       ))}
     </div>
+  ) : (
+    <EmptySearch />
   );
 };

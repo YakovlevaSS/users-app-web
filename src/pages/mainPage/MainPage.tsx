@@ -39,26 +39,33 @@ export const MainPage = () => {
 
   useEffect(() => {
     const Search = () => {
-      const filtered = users.filter((user) =>
-      (user.name?.first.toLowerCase().includes(inputValue.toLowerCase()) ||
-      user.name?.last.toLowerCase().includes(inputValue.toLowerCase()) ||
-      user.email.toLowerCase().includes(inputValue.toLowerCase()) ||
-      user.phone.toLowerCase().includes(inputValue.toLowerCase()) ||
-      formatDate(user.dob?.date).toLowerCase().includes(inputValue.toLowerCase()) ||
-      user.location?.city.toLowerCase().includes(inputValue.toLowerCase()) ||
-      user.location?.state.toLowerCase().includes(inputValue.toLowerCase()) ||
-      user.location?.country.toLowerCase().includes(inputValue.toLowerCase()))
+      const filtered = users.filter(
+        (user) =>
+          user.name?.first.toLowerCase().includes(inputValue.toLowerCase()) ||
+          user.name?.last.toLowerCase().includes(inputValue.toLowerCase()) ||
+          user.email.toLowerCase().includes(inputValue.toLowerCase()) ||
+          user.phone.toLowerCase().includes(inputValue.toLowerCase()) ||
+          formatDate(user.dob?.date)
+            .toLowerCase()
+            .includes(inputValue.toLowerCase()) ||
+          user.location?.city
+            .toLowerCase()
+            .includes(inputValue.toLowerCase()) ||
+          user.location?.state
+            .toLowerCase()
+            .includes(inputValue.toLowerCase()) ||
+          user.location?.country
+            .toLowerCase()
+            .includes(inputValue.toLowerCase())
       );
       setFilteredUsers(filtered);
     };
     Search();
   }, [inputValue, users]);
 
-
   const handleDeleteUser = (id: string) => {
-    const updatedUsers = users.filter(user => user.login.md5 !== id);
+    const updatedUsers = users.filter((user) => user.login.md5 !== id);
     setUsers(updatedUsers);
-
   };
 
   if (errors) {
@@ -82,8 +89,11 @@ export const MainPage = () => {
         </button>
       </div>
       <div className={s.content}>
-        <UserList users={inputValue ? filteredUsers : users} handleDeleteUser={handleDeleteUser} />
-        <Analytics users={users} />
+            <UserList
+              users={inputValue ? filteredUsers : users}
+              handleDeleteUser={handleDeleteUser}
+            />
+            <Analytics users={users} />
       </div>
     </div>
   );

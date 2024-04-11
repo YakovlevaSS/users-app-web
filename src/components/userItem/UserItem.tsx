@@ -16,7 +16,6 @@ export const UserItem: React.FC<IProps> = ({
   handleActive,
   handleDeleteUser,
 }) => {
-  console.log(user);
 
   return (
     <div
