@@ -1,6 +1,6 @@
 import { FC } from "react";
 import s from "./index.module.sass";
-import { BasketSvg } from "./Basket";
+import { BasketSvg } from "../../utilits/Icons/Busket";
 import { IUser } from "../../interface/user";
 
 interface IProps {
