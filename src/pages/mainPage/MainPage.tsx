@@ -16,6 +16,8 @@ export const MainPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState<string>("");
 
+  console.log(users)
+
   const fetchData = () => {
     setIsLoading(true);
     axios
@@ -71,10 +73,10 @@ export const MainPage = () => {
   };
 
   if (errors) {
-    return <Error error={errors}/>
+    return <Error error={errors} />;
   }
   if (isLoading) {
-    return <Loader/>
+    return <Loader />;
   }
   return (
     <div className={s.pageWrap}>
@@ -91,11 +93,11 @@ export const MainPage = () => {
         </button>
       </div>
       <div className={s.content}>
-            <UserList
-              users={inputValue ? filteredUsers : users}
-              handleDeleteUser={handleDeleteUser}
-            />
-            <Analytics users={users} />
+        <UserList
+          users={inputValue ? filteredUsers : users}
+          handleDeleteUser={handleDeleteUser}
+        />
+        <Analytics users={users} />
       </div>
     </div>
   );
