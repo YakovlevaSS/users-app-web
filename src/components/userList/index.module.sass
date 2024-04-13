@@ -1,5 +1,5 @@
 .userList
-    height: calc(100vh - 136px) 
+    height: calc(100vh - 136px)
     overflow-y: auto
     display: flex
     flex-direction: row
@@ -7,3 +7,18 @@
     justify-content: flex-start
     gap: 16px
     align-content: flex-start
+    
+.userList::-webkit-scrollbar
+    width: 0
+    height: 0
+
+.userList:hover::-webkit-scrollbar
+    width: 4px
+    height: 884px
+    background: var(--ScrollBackground)
+
+.userList::-webkit-scrollbar-thumb
+    width: 4px
+    height: 140px
+    background-color: var(--Scroll)
+    border-radius: 100px
