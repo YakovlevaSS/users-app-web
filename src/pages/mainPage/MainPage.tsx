@@ -16,8 +16,6 @@ export const MainPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState<string>("");
 
-  console.log(users)
-
   const fetchData = () => {
     setIsLoading(true);
     axios
