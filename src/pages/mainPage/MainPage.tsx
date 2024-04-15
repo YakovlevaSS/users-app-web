@@ -5,9 +5,9 @@ import { IUser } from "../../interface/user";
 import { UserList } from "../../components/userList/UserList";
 import { Search } from "../../components/search/Search";
 import { Analytics } from "../../components/analytics/Analytics";
-import formatDate from "../../utilits/formatDate";
 import Loader from "../../components/stubs/Loader";
 import Error from "../../components/stubs/Error";
+import { getSearch } from "../../utilits/getSearch";
 
 export const MainPage = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -40,29 +40,7 @@ export const MainPage = () => {
   }, []);
 
   useEffect(() => {
-    const Search = () => {
-      const filtered = users.filter(
-        (user) =>
-          user.name?.first.toLowerCase().includes(inputValue.toLowerCase()) ||
-          user.name?.last.toLowerCase().includes(inputValue.toLowerCase()) ||
-          user.email.toLowerCase().includes(inputValue.toLowerCase()) ||
-          user.phone.toLowerCase().includes(inputValue.toLowerCase()) ||
-          formatDate(user.dob?.date)
-            .toLowerCase()
-            .includes(inputValue.toLowerCase()) ||
-          user.location?.city
-            .toLowerCase()
-            .includes(inputValue.toLowerCase()) ||
-          user.location?.state
-            .toLowerCase()
-            .includes(inputValue.toLowerCase()) ||
-          user.location?.country
-            .toLowerCase()
-            .includes(inputValue.toLowerCase())
-      );
-      setFilteredUsers(filtered);
-    };
-    Search();
+    getSearch({ setFilteredUsers, inputValue, users });
   }, [inputValue, users]);
 
   const handleDeleteUser = (id: string) => {
