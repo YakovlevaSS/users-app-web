@@ -1,5 +1,4 @@
 import s from "./index.module.sass";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { IUser } from "../../interface/user";
 import { UserList } from "../../components/userList/UserList";
@@ -8,6 +7,7 @@ import { Analytics } from "../../components/analytics/Analytics";
 import Loader from "../../components/stubs/Loader";
 import Error from "../../components/stubs/Error";
 import { getSearch } from "../../utilits/getSearch";
+import { fetchData } from "../../components/API/getUsersApi";
 
 export const MainPage = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -16,27 +16,9 @@ export const MainPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState<string>("");
 
-  const fetchData = () => {
-    setIsLoading(true);
-    axios
-      .get(`https://randomuser.me/api/?results=500`)
-      .then((res) => {
-        if (res.status === 200) {
-          setUsers(res.data.results);
-        }
-      })
-      .catch(function (error) {
-        console.log(error?.response?.data?.error);
-        setErrors(error?.response?.data?.error || "Что-то пошло не так");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
   useEffect(() => {
     setErrors("");
-    fetchData();
+    fetchData(setUsers,setErrors, setIsLoading);
   }, []);
 
   useEffect(() => {
@@ -62,7 +44,7 @@ export const MainPage = () => {
           className={s.refreshButton}
           onClick={() => {
             setInputValue("");
-            fetchData();
+            fetchData(setUsers,setErrors, setIsLoading);
           }}
         >
           Refresh Users
