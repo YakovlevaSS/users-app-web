@@ -18,7 +18,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     setErrors("");
-    fetchData(setUsers,setErrors, setIsLoading);
+    fetchData(setUsers, setErrors, setIsLoading);
   }, []);
 
   useEffect(() => {
@@ -36,6 +36,7 @@ export const MainPage = () => {
   if (isLoading) {
     return <Loader />;
   }
+
   return (
     <div className={s.pageWrap}>
       <div className={s.funcPanel}>
@@ -44,7 +45,7 @@ export const MainPage = () => {
           className={s.refreshButton}
           onClick={() => {
             setInputValue("");
-            fetchData(setUsers,setErrors, setIsLoading);
+            fetchData(setUsers, setErrors, setIsLoading);
           }}
         >
           Refresh Users
