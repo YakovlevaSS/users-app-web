@@ -1,5 +1,5 @@
-import s from './index.module.sass'
-import { EmptySearchImg } from '../../utilits/Icons/emptySearch'
+import s from "./index.module.sass";
+import { EmptySearchImg } from "../../utilits/Icons/emptySearch";
 
 export default function EmptySearch() {
   return (
@@ -10,5 +10,5 @@ export default function EmptySearch() {
         <p className={s.text}>Попробуйте изменить ваш запрос</p>
       </div>
     </div>
-  )
+  );
 }

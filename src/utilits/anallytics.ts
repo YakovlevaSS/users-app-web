@@ -1,10 +1,9 @@
 import { IUser } from "../interface/user";
 
 export const calculateAgeGroups = (users: IUser[]): number[] => {
-  const ageGroups = [0, 0, 0, 0, 0]; 
+  const ageGroups = [0, 0, 0, 0, 0];
 
   for (const user of users) {
-    
     if (user?.dob?.age >= 11 && user?.dob?.age <= 20) {
       ageGroups[0]++;
     } else if (user?.dob?.age >= 21 && user?.dob?.age <= 30) {
@@ -26,9 +25,9 @@ export const calculateGenderGroups = (users: IUser[]): [number, number] => {
   let femaleCount = 0;
 
   for (const user of users) {
-    if (user.gender === 'male') {
+    if (user.gender === "male") {
       maleCount++;
-    } else if (user.gender === 'female') {
+    } else if (user.gender === "female") {
       femaleCount++;
     }
   }

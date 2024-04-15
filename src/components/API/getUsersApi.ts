@@ -1,7 +1,11 @@
-import axios from 'axios';
-import { IUser } from '../../interface/user';
+import axios from "axios";
+import { IUser } from "../../interface/user";
 
-export const fetchData = (setUsers: (users: IUser[]) => void, setErrors: (error: string) => void, setIsLoading: (loading: boolean) => void) => {
+export const fetchData = (
+  setUsers: (users: IUser[]) => void,
+  setErrors: (error: string) => void,
+  setIsLoading: (loading: boolean) => void
+) => {
   setIsLoading(true);
   axios
     .get(`https://randomuser.me/api/?results=500`)
@@ -18,4 +22,3 @@ export const fetchData = (setUsers: (users: IUser[]) => void, setErrors: (error:
       setIsLoading(false);
     });
 };
-

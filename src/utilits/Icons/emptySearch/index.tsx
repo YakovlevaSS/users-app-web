@@ -1,11 +1,6 @@
 export const EmptySearchImg = () => {
   return (
-    <svg
-      width="178"
-      height="192"
-      viewBox="0 0 178 192"
-      fill="none"
-    >
+    <svg width="178" height="192" viewBox="0 0 178 192" fill="none">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -88,5 +83,5 @@ export const EmptySearchImg = () => {
         fillOpacity="0.4"
       />
     </svg>
-  )
-}
+  );
+};

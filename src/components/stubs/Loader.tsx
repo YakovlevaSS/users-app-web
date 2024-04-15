@@ -1,4 +1,4 @@
-import s from './index.module.sass'
+import s from "./index.module.sass";
 
 export default function Loader() {
   return (
@@ -7,5 +7,5 @@ export default function Loader() {
         <p className={s.text}>Идет загрузка...</p>
       </div>
     </div>
-  )
+  );
 }

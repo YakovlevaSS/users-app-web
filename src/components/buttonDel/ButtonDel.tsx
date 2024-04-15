@@ -8,9 +8,12 @@ interface IProps {
   user: IUser;
 }
 
-export const ButtonDel: FC<IProps> = ({handleDeleteUser, user}) => {
+export const ButtonDel: FC<IProps> = ({ handleDeleteUser, user }) => {
   return (
-    <button className={s.buttonDel} onClick={() => handleDeleteUser(user.login.md5)}>
+    <button
+      className={s.buttonDel}
+      onClick={() => handleDeleteUser(user.login.md5)}
+    >
       <BasketSvg />
     </button>
   );

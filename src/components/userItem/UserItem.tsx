@@ -16,7 +16,6 @@ export const UserItem: React.FC<IProps> = ({
   handleActive,
   handleDeleteUser,
 }) => {
-
   return (
     <div
       className={`${s.cardWrap} ${

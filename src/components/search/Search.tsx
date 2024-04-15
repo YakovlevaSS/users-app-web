@@ -39,6 +39,11 @@ export const Search: FC<IProps> = ({ setInputValue }) => {
     setQuery(value);
   };
   return (
-    <input className={s.inputSearch} onChange={handleSearch} placeholder="Search" type="text" />
+    <input
+      className={s.inputSearch}
+      onChange={handleSearch}
+      placeholder="Search"
+      type="text"
+    />
   );
 };

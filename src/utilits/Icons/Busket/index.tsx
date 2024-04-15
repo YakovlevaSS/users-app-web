@@ -1,10 +1,5 @@
 export const BasketSvg = () => (
-  <svg
-    width="14.000000"
-    height="18.000000"
-    viewBox="0 0 14 18"
-    fill="none"
-  >
+  <svg width="14.000000" height="18.000000" viewBox="0 0 14 18" fill="none">
     <defs />
     <path
       id="Vector"

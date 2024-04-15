@@ -1,7 +1,7 @@
 import s from "./index.module.sass";
 
 interface IProps {
-  error: string; 
+  error: string;
 }
 
 const Error: React.FC<IProps> = ({ error }) => {
